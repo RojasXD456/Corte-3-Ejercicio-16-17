@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abastico - Registro de Ventas</title>
+</head>
+
+<body>
+
+  <section id="body">
+    <h2>Gestión de Ventas - Abastico</h2>
+    <button id="body_btNuevoCliente">Nuevo Cliente</button>
+    <hr>
+    <h3>Inventario Disponible</h3>
+    <div>
+      <strong>Frutas:</strong> <span id="body_lblFrutasDisponible">20</span> kg
+    </div>
+    <div>
+      <strong>Carne:</strong> <span id="body_lblCarneDisponible">10</span> kg
+    </div>
+    <hr>
+    <h3>Clientes Atendidos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Cédula</th>
+          <th>Nombre</th>
+          <th>Frutas (kg)</th>
+          <th>Carne (kg)</th>
+          <th>Monto Pagar ($)</th>
+        </tr>
+      </thead>
+      <tbody id="body_clientes"></tbody>
+    </table>
+    <hr>
+    <div>
+      Cantidad de Clientes: <span id="body_lblCantidadClientes">0</span>
+    </div>
+    <div>
+      Total Cobrado: $<span id="body_lblTotalCobrado">0.00</span>
+    </div>
+  </section>
+
+  <section id="cliente" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; width: 350px;">
+    <h5 id="cliente_lblCliente">Procesar Cliente</h5>
+    <div>
+      <label>Nombre:
+        <input type="text" id="cliente_inNombre" placeholder="Nombre del cliente">
+      </label>
+    </div>
+    <div>
+      <label>Cédula:
+        <input type="number" id="cliente_inCedula" placeholder="Ej: 25123456">
+      </label>
+    </div>
+    <div>
+      <label>Frutas (kg):
+        <input type="number" id="cliente_inCantFrutas" placeholder="Ej: 3">
+      </label>
+    </div>
+    <div>
+      <label>Carne (kg):
+        <input type="number" id="cliente_inCantCarne" placeholder="Ej: 1">
+      </label>
+    </div>
+    <br>
+    <button id="cliente_btCancelar">Cancelar</button>
+    <button id="cliente_btAceptar">Aceptar</button>
+  </section>
+
+  <script type="module">
+    import Cl_cTienda from "./dist/controllers/Cl_cTienda.js";
+    import Cl_cCliente from "./dist/controllers/Cl_cCliente.js";
+
+    import Cl_vTienda from "./dist/views/Cl_vTienda.js";
+    import Cl_vCliente from "./dist/views/Cl_vCliente.js";
+
+    const vistaTienda = new Cl_vTienda();
+    const vistaCliente = new Cl_vCliente();
+
+    const controladorCliente = new Cl_cCliente(vistaCliente);
+    new Cl_cTienda(vistaTienda, controladorCliente);
+  </script>
+</body>
+
+</html>

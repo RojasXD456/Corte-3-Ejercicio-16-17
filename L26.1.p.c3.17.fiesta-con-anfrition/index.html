@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiesta con Anfitrión - Registro de Invitados</title>
+</head>
+
+<body>
+
+  <section id="body">
+    <h2>Gestión de Fiesta - Registro de Invitados</h2>
+    <button id="body_btNuevoInvitado">Nuevo Invitado</button>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Cédula</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Consumo ($)</th>
+        </tr>
+      </thead>
+      <tbody id="body_invitados"></tbody>
+    </table>
+    <hr>
+    <div>
+      Cantidad de Invitados: <span id="body_lblCantidadInvitados">0</span>
+    </div>
+    <div>
+      Total Consumo: $<span id="body_lblTotalConsumo">0.00</span>
+    </div>
+    <div>
+      Promedio de Edad: <span id="body_lblPromedioEdad">0.00</span>
+    </div>
+  </section>
+
+  <section id="invitado" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; width: 350px;">
+    <h5 id="invitado_lblInvitado">Procesar Invitado</h5>
+    <div>
+      <label>Nombre:
+        <input type="text" id="invitado_inNombre" placeholder="Nombre del invitado">
+      </label>
+    </div>
+    <div>
+      <label>Cédula:
+        <input type="number" id="invitado_inCedula" placeholder="Ej: 25123456">
+      </label>
+    </div>
+    <div>
+      <label>Edad:
+        <input type="number" id="invitado_inEdad" placeholder="Ej: 25">
+      </label>
+    </div>
+    <div>
+      <label>Consumo ($):
+        <input type="number" id="invitado_inConsumo" placeholder="Ej: 50.00" step="0.01">
+      </label>
+    </div>
+    <br>
+    <button id="invitado_btCancelar">Cancelar</button>
+    <button id="invitado_btAceptar">Aceptar</button>
+  </section>
+
+  <script type="module">
+    import Cl_cFiesta from "./dist/controllers/Cl_cFiesta.js";
+    import Cl_cInvitado from "./dist/controllers/Cl_cInvitado.js";
+
+    import Cl_vFiesta from "./dist/views/Cl_vFiesta.js";
+    import Cl_vInvitado from "./dist/views/Cl_vInvitado.js";
+
+    const vistaFiesta = new Cl_vFiesta();
+    const vistaInvitado = new Cl_vInvitado();
+
+    const controladorInvitado = new Cl_cInvitado(vistaInvitado);
+    new Cl_cFiesta(vistaFiesta, controladorInvitado);
+  </script>
+</body>
+
+</html>
